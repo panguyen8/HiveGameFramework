@@ -16,5 +16,24 @@ public class HiveGameState {
     static int wBee, wSpider, wAnt, wBeetle, wGrasshopper;
     static int bBee, bSpider, bAnt, bBeetle, bGrasshopper;
 
+    //Returns a formatted string that describes the game's state
+    @Override
+    public String toString()
+    {
+        return "Turn: " + turn + "/n" +
+                "BLACK_TURN: " + BLACK_TURN + "/n" +
+                "WHITE_TURN: " + WHITE_TURN + "/n" +
+                "White Bee: " + wBee + "/n" +
+                "White Spider: " + wSpider + "/n" +
+                "White Ant: " + wAnt + "/n" +
+                "White Beetle: " + wBeetle + "/n" +
+                "White Grasshopper: " + wGrasshopper + "/n" +
+                "Black Bee: " + bBee + "/n" +
+                "Black Spider: " + bSpider + "/n" +
+                "Black Ant: " + bAnt + "/n" +
+                "Black Beetle: " + bBeetle + "/n" +
+                "Black Grasshopper: " + bGrasshopper + "/n" +
+                board;
 
+    }
 }
