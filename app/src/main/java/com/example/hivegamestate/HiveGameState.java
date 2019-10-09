@@ -28,6 +28,8 @@ public class HiveGameState {
     static final int BLACK_TURN = 0;
     static final int WHITE_TURN = 1;
 
+    // Done by Samuel Nguyen
+    int playerToMove = 1;
     //Basic constructor
     public HiveGameState()
     {
@@ -91,5 +93,47 @@ public class HiveGameState {
                 "Black Beetle: " + bBeetle + "/n" +
                 "Black Grasshopper: " + bGrasshopper + "/n" +
                 board;
+    }
+
+    // Following methods done by Samuel Nguyen
+    // Feel free to edit these (if so, delete this comment)
+    boolean placePiece(int id) {
+        if(id == getPlayerToMove()) {
+            return true;
+        }
+        return false;
+    }
+
+    boolean movePiece(int id) {
+        if(id == getPlayerToMove()) {
+            return true;
+        }
+        return false;
+    }
+
+    // Not sure if we're implementing this, go ahead and delete if so
+    boolean undo(int id) {
+        if(id == getPlayerToMove()) {
+            return true;
+        }
+        return false;
+    }
+
+    boolean quit(int id) {
+        if(id == getPlayerToMove()) {
+            return true;
+        }
+        return false;
+    }
+
+    boolean zoom(int id) {
+        if(id == getPlayerToMove()) {
+            return true;
+        }
+        return false;
+    }
+
+    int getPlayerToMove() {
+        return this.playerToMove;
     }
 }
