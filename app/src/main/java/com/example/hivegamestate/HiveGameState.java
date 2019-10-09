@@ -5,7 +5,7 @@ public class HiveGameState {
     //If 1, white moves, if 2, black moves
     //Removed static for now, not sure if it's needed
     //Let me (Stephen) know if it is
-    private int turn;
+    private int turn = 1;  // Edit by Samuel Nguyen
 
     //Stephen added this instance vars, delete if needed
 
@@ -28,8 +28,6 @@ public class HiveGameState {
     static final int BLACK_TURN = 0;
     static final int WHITE_TURN = 1;
 
-    // Done by Samuel Nguyen
-    int playerToMove = 1;
     //Basic constructor
     public HiveGameState()
     {
@@ -97,15 +95,31 @@ public class HiveGameState {
 
     // Following methods done by Samuel Nguyen
     // Feel free to edit these (if so, delete this comment)
+
+    /**
+     * Places a piece on the board
+     *
+     * @param id: the id of whose turn it is
+     * @return
+     */
     boolean placePiece(int id) {
-        if(id == getPlayerToMove()) {
-            return true;
+        if(id == getTurn()) {
+            if(id == WHITE_TURN) {
+                this.player1Pieces--;
+                this.setTurn(BLACK_TURN);
+                return true;
+            }
+            else if(id == BLACK_TURN) {
+                this.player2Pieces--;
+                this.setTurn(WHITE_TURN);
+                return true;
+            }
         }
         return false;
     }
 
     boolean movePiece(int id) {
-        if(id == getPlayerToMove()) {
+        if(id == getTurn()) {
             return true;
         }
         return false;
@@ -113,27 +127,31 @@ public class HiveGameState {
 
     // Not sure if we're implementing this, go ahead and delete if so
     boolean undo(int id) {
-        if(id == getPlayerToMove()) {
+        if(id == getTurn()) {
             return true;
         }
         return false;
     }
 
     boolean quit(int id) {
-        if(id == getPlayerToMove()) {
+        if(id == getTurn()) {
             return true;
         }
         return false;
     }
 
     boolean zoom(int id) {
-        if(id == getPlayerToMove()) {
+        if(id == getTurn()) {
             return true;
         }
         return false;
     }
 
-    int getPlayerToMove() {
-        return this.playerToMove;
+    int getTurn() {
+        return this.turn;
+    }
+
+    void setTurn(int id) {
+        this.turn = id;
     }
 }
