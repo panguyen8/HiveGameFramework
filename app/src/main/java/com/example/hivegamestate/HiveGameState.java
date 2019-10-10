@@ -33,12 +33,11 @@ public class HiveGameState {
     private int whiteAnts;
     private int blackAnts;
     private int whiteBeetles;
-
-    //Basic constructor
     private int blackBeetles;
     private int whiteGHoppers;
     private int blackGHoppers;
 
+    //Basic constructor
     public HiveGameState() {
         this.turn = WHITE_TURN; // White goes first?
         this.player1Pieces = 11;
@@ -107,7 +106,7 @@ public class HiveGameState {
         if (id == WHITE_TURN) {
             // Checks piece being placed
             if(piece instanceof QueenBee) {
-                this.whiteBees--;
+                this.whiteAnts--;
             }
             else if(piece instanceof Spider) {
                 this.whiteSpiders--;

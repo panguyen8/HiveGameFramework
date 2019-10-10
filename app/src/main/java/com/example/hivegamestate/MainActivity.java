@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity{
 
     final EditText theText = findViewById(R.id.EditText);
-
+    QueenBee qb = new QueenBee();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,19 +37,19 @@ public class MainActivity extends AppCompatActivity{
 
                 //call all methods of firstInstance
                 //each method also requires a String to be appended to the editText object
-                firstInstance.placePiece();
+                firstInstance.placePiece(1, qb);
                 theText.append("Piece was placed");
-                firstInstance.movePiece();
+                firstInstance.movePiece(1);
                 theText.append("Piece was moved");
-                firstInstance.undo();
+                firstInstance.undo(1);
                 theText.append("Piece was undoed");
-                firstInstance.quit();
+                firstInstance.quit(1);
                 theText.append("game was quit");
-                firstInstance.zoom();
+                firstInstance.zoom(1);
                 theText.append("Game was zoomed in");
                 firstInstance.getTurn();
                 theText.append("Got the turn");
-                firstInstance.setTurn();
+                firstInstance.setTurn(0);
                 theText.append("Set the turn");
 
                 theText.append("randomString");
