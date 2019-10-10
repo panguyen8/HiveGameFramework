@@ -1,23 +1,29 @@
+/*
+*
+*
+*
+*
+ */
+
 package com.example.hivegamestate;
 /*
 Remove static variables
 
  */
 
+import java.util.ArrayList;
+
 public class HiveGameState {
-    static final int BLACK_TURN = 0;
+    final int BLACK_TURN = 0;
 
     //Stephen added this instance vars, delete if needed
-    static final int WHITE_TURN = 1;
+    final int WHITE_TURN = 1;
 
     //holds a 2d array of strings for what the board would look like
     //using a 2d array for now, idk if we will used a linked list later on
     //once we get the class for the pieces set up, we can change string to that new class
     private Piece[][] board = new Piece[100][100];
 
-    //holds the value for how many pieces the white and black player have in their hand (not on board)
-    private int wBee, wSpider, wAnt, wBeetle, wGrasshopper;
-    private int bBee, bSpider, bAnt, bBeetle, bGrasshopper;
 
     //int variable to tell whose turn it is
     //If 1, white moves, if 2, black moves
@@ -29,61 +35,36 @@ public class HiveGameState {
     private int player1Pieces;
     private int player2Pieces;
 
-    // Creates pieces
-    Piece wBee1 = new Piece("QueenBee");
-    Piece bBee1 = new Piece("QueenBee");
+    public ArrayList<piece> bugList = new ArrayList<>();
 
-    Piece wAnt1 = new Piece("Ant");
-    Piece wAnt2 = new Piece("Ant");
-    Piece wAnt3 = new Piece("Ant");
-    Piece bAnt1 = new Piece("Ant");
-    Piece bAnt2 = new Piece("Ant");
-    Piece bAnt3 = new Piece("Ant");
-
-    Piece wGHopper1 = new Piece("Grasshopper");
-    Piece wGHopper2 = new Piece("Grasshopper");
-    Piece wGHopper3 = new Piece("Grasshopper");
-    Piece bGHopper1 = new Piece("Grasshopper");
-    Piece bGHopper2 = new Piece("Grasshopper");
-    Piece bGHopper3 = new Piece("Grasshopper");
-
-    Piece wSpider1 = new Piece("Spider");
-    Piece wSpider2 = new Piece("Spider");
-    Piece bSpider1 = new Piece("Spider");
-    Piece bSpider2 = new Piece("Spider");
-
-    Piece wBeetle1 = new Piece("Beetle");
-    Piece wBeetle2 = new Piece("Beetle");
-    Piece bBeetle1 = new Piece("Beetle");
-    Piece bBeetle2 = new Piece("Beetle");
+    enum piece {
+        BBEE, BSPIDER, BANT, BGHOPPER, BBEETLE, WBEE, WSPIDER, WANT, WGHOPPER, WBEETLE;
+    }
 
     //Basic constructor
     public HiveGameState() {
-        this.wBee = 1;
-        this.bBee = 1;
-        this.wGrasshopper = 3;
-        this.bGrasshopper = 3;
-        this.wAnt = 3;
-        this.bAnt = 3;
-        this.wBeetle = 2;
-        this.bBeetle = 2;
-        this.wSpider = 2;
-        this.bSpider = 2;
+
+        bugList.add(piece.BBEE);
+        bugList.add(piece.BSPIDER);
+        bugList.add(piece.BANT);
+        bugList.add(piece.BGHOPPER);
+        bugList.add(piece.BBEETLE);
+        bugList.add(piece.WBEE);
+        bugList.add(piece.WSPIDER);
+        bugList.add(piece.WANT);
+        bugList.add(piece.WGHOPPER);
+        bugList.add(piece.WBEETLE);
+
+        this.turn = WHITE_TURN; // White goes first?
+        this.player1Pieces = 11;
+        this.player2Pieces = 11;
+
     }
 
     //Copy constructor (Stephen)
     public HiveGameState(HiveGameState hgs) {
         hgs.turn = this.turn;
-        this.wBee = hgs.wBee;
-        this.bBee = hgs.bBee;
-        this.wGrasshopper = hgs.wGrasshopper;
-        this.bGrasshopper = hgs.bGrasshopper;
-        this.wAnt = hgs.wAnt;
-        this.bAnt = hgs.bAnt;
-        this.wBeetle = hgs.wBeetle;
-        this.bBeetle = hgs.bBeetle;
-        this.wSpider = hgs.wSpider;
-        this.bSpider = hgs.bSpider;
+
 
         //Copies each board index/cell
         for (int i = 0; i < board.length; i++)
@@ -101,16 +82,16 @@ public class HiveGameState {
         return "Turn: " + turn + "/n" +
                 "BLACK_TURN: " + BLACK_TURN + "/n" +
                 "WHITE_TURN: " + WHITE_TURN + "/n" +
-                "White Bee: " + wBee + "/n" +
-                "White Spider: " + wSpider + "/n" +
-                "White Ant: " + wAnt + "/n" +
-                "White Beetle: " + wBeetle + "/n" +
-                "White Grasshopper: " + wGrasshopper + "/n" +
-                "Black Bee: " + bBee + "/n" +
-                "Black Spider: " + bSpider + "/n" +
-                "Black Ant: " + bAnt + "/n" +
-                "Black Beetle: " + bBeetle + "/n" +
-                "Black Grasshopper: " + bGrasshopper + "/n" +
+                "White Bee: " + piece.WBEE + "/n" +
+                "White Spider: " + piece.WSPIDER + "/n" +
+                "White Ant: " + piece.WANT + "/n" +
+                "White Beetle: " + piece.WBEETLE + "/n" +
+                "White Grasshopper: " + piece.WGHOPPER + "/n" +
+                "Black Bee: " + piece.BBEE + "/n" +
+                "Black Spider: " + piece.BSPIDER + "/n" +
+                "Black Ant: " + piece.BANT + "/n" +
+                "Black Beetle: " + piece.BBEETLE + "/n" +
+                "Black Grasshopper: " + piece.BGHOPPER + "/n" +
                 board;
     }
 
@@ -125,7 +106,7 @@ public class HiveGameState {
      * @return true if successful, false otherwise
      */
     boolean placePiece(int id, Piece piece, int boardX, int boardY) {
-        if (id == WHITE_TURN) {
+        /*if (id == WHITE_TURN) {
             // Checks piece being placed
             if(piece.getType().equals("QueenBee")) {
                 this.wBee--;
@@ -169,7 +150,7 @@ public class HiveGameState {
             this.setTurn(WHITE_TURN);
             return true;
         }
-        return false;
+        */return false;
     }
 
     /**
