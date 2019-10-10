@@ -156,7 +156,10 @@ public class HiveGameState {
      * @return true if successful, false otherwise
      */
     boolean movePiece(int id) {
-        if (id == getTurn()) {
+        if(id == WHITE_TURN) {
+            return true;
+        }
+        else if(id == BLACK_TURN) {
             return true;
         }
         return false;
@@ -164,7 +167,7 @@ public class HiveGameState {
 
     // Not sure if we're implementing this, go ahead and delete if so
     boolean undo(int id) {
-        if (id == getTurn()) {
+        if (id == WHITE_TURN || id == BLACK_TURN) {
             return true;
         }
         return false;
@@ -178,6 +181,7 @@ public class HiveGameState {
      */
     boolean quit(int id) {
         if(id == WHITE_TURN || id == BLACK_TURN) {
+            // Quit method here
             return true;
         }
         return false;
@@ -190,7 +194,8 @@ public class HiveGameState {
      * @return true if successful, false otherwise
      */
     boolean zoom(int id) {
-        if (id == getTurn()) {
+        if (id == WHITE_TURN || id == BLACK_TURN) {
+            // Zoom method here
             return true;
         }
         return false;
