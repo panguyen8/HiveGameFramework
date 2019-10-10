@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //call all methods of firstInstance
                 //each method also requires a String to be appended to the editText object
-                firstInstance.placePiece(1, firstInstance.wAnt1, 50, 50);
+                firstInstance.placePiece(1, firstInstance.ant, 50, 50);
                 theText.append("Piece was placed");
-                firstInstance.movePiece(1);
+                firstInstance.movePiece(1, firstInstance.ant, 50, 50, 60, 60);
                 theText.append("Piece was moved");
                 firstInstance.undo(1);
                 theText.append("Piece was undoed");

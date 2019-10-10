@@ -37,6 +37,9 @@ public class HiveGameState {
     private int player1Pieces;
     private int player2Pieces;
 
+    // This is so MainActivity compiles, delete when necessary
+    Piece ant = new Piece("Ant");
+
     public ArrayList<piece> bugList = new ArrayList<>();
 
     enum piece {
