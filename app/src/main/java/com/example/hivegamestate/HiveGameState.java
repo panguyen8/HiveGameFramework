@@ -127,9 +127,11 @@ public class HiveGameState {
      */
     boolean movePiece(int id) {
         if(id == WHITE_TURN) {
+            this.setTurn(BLACK_TURN);
             return true;
         }
         else if(id == BLACK_TURN) {
+            this.setTurn(WHITE_TURN);
             return true;
         }
         return false;
