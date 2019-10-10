@@ -36,8 +36,22 @@ public class MainActivity extends AppCompatActivity{
                 HiveGameState secondInstance = new HiveGameState(firstInstance);
 
                 //call all methods of firstInstance
+                //each method also requires a String to be appended to the editText object
+                firstInstance.placePiece();
+                theText.append("Piece was placed");
+                firstInstance.movePiece();
+                theText.append("Piece was moved");
+                firstInstance.undo();
+                theText.append("Piece was undoed");
+                firstInstance.quit();
+                theText.append("game was quit");
+                firstInstance.zoom();
+                theText.append("Game was zoomed in");
+                firstInstance.getTurn();
+                theText.append("Got the turn");
+                firstInstance.setTurn();
+                theText.append("Set the turn");
 
-                //each method requires a String to be appended to the editText object
                 theText.append("randomString");
 
                 //the third instance of game created
