@@ -30,16 +30,69 @@ public class HiveGameState {
     private int player2Pieces;
 
     // Creates pieces
+    Piece wBee1 = new Piece("QueenBee");
+    Piece bBee1 = new Piece("QueenBee");
+
     Piece wAnt1 = new Piece("Ant");
+    Piece wAnt2 = new Piece("Ant");
+    Piece wAnt3 = new Piece("Ant");
+    Piece bAnt1 = new Piece("Ant");
+    Piece bAnt2 = new Piece("Ant");
+    Piece bAnt3 = new Piece("Ant");
+
+    Piece wGHopper1 = new Piece("Grasshopper");
+    Piece wGHopper2 = new Piece("Grasshopper");
+    Piece wGHopper3 = new Piece("Grasshopper");
+    Piece bGHopper1 = new Piece("Grasshopper");
+    Piece bGHopper2 = new Piece("Grasshopper");
+    Piece bGHopper3 = new Piece("Grasshopper");
+
+    Piece wSpider1 = new Piece("Spider");
+    Piece wSpider2 = new Piece("Spider");
+    Piece bSpider1 = new Piece("Spider");
+    Piece bSpider2 = new Piece("Spider");
+
+    Piece wBeetle1 = new Piece("Beetle");
+    Piece wBeetle2 = new Piece("Beetle");
+    Piece bBeetle1 = new Piece("Beetle");
+    Piece bBeetle2 = new Piece("Beetle");
+
     //Basic constructor
     public HiveGameState() {
-
+        this.wBee = 1;
+        this.bBee = 1;
+        this.wGrasshopper = 3;
+        this.bGrasshopper = 3;
+        this.wAnt = 3;
+        this.bAnt = 3;
+        this.wBeetle = 2;
+        this.bBeetle = 2;
+        this.wSpider = 2;
+        this.bSpider = 2;
     }
 
     //Copy constructor (Stephen)
     public HiveGameState(HiveGameState hgs) {
         hgs.turn = this.turn;
-        //two for loops
+        this.wBee = hgs.wBee;
+        this.bBee = hgs.bBee;
+        this.wGrasshopper = hgs.wGrasshopper;
+        this.bGrasshopper = hgs.bGrasshopper;
+        this.wAnt = hgs.wAnt;
+        this.bAnt = hgs.bAnt;
+        this.wBeetle = hgs.wBeetle;
+        this.bBeetle = hgs.bBeetle;
+        this.wSpider = hgs.wSpider;
+        this.bSpider = hgs.bSpider;
+
+        //Copies each board index/cell
+        for (int i = 0; i < board.length; i++)
+        {
+            for (int j = 0; j < board[i].length; j++)
+            {
+                this.board[i][j] = hgs.board[i][j];
+            }
+        }
     }
 
     //Returns a formatted string that describes the game's state
