@@ -11,6 +11,8 @@ Remove static variables
 
  */
 
+import android.net.wifi.p2p.WifiP2pGroup;
+
 import java.util.ArrayList;
 
 public class HiveGameState {
@@ -106,22 +108,22 @@ public class HiveGameState {
      * @return true if successful, false otherwise
      */
     boolean placePiece(int id, Piece piece, int boardX, int boardY) {
-        /*if (id == WHITE_TURN) {
+        if (id == WHITE_TURN) {
             // Checks piece being placed
             if(piece.getType().equals("QueenBee")) {
-                this.wBee--;
+                bugList.remove(HiveGameState.piece.WBEE);
             }
             else if(piece.getType().equals("Spider")) {
-                this.wSpider--;
+                bugList.remove(HiveGameState.piece.WSPIDER);
             }
             else if(piece.getType().equals("Ant")) {
-                this.wAnt--;
+                bugList.remove(HiveGameState.piece.WANT);
             }
             else if(piece.getType().equals("Beetle")) {
-                this.wBeetle--;
+                bugList.remove(HiveGameState.piece.WBEETLE);
             }
             else if(piece.getType().equals("Grasshopper")) {
-                this.wGrasshopper--;
+                bugList.remove(HiveGameState.piece.WGHOPPER);
             }
             this.player1Pieces--;
             board[boardX][boardY] = piece;
@@ -131,26 +133,26 @@ public class HiveGameState {
         else if (id == BLACK_TURN) {
             // Checks piece being placed
             if(piece.getType().equals("QueenBee")) {
-                this.bBee--;
+                bugList.remove(HiveGameState.piece.BBEE);
             }
             else if(piece.getType().equals("Spider")) {
-                this.bSpider--;
+                bugList.remove(HiveGameState.piece.BSPIDER);
             }
             else if(piece.getType().equals("Ant")) {
-                this.bAnt--;
+                bugList.remove(HiveGameState.piece.BANT);
             }
             else if(piece.getType().equals("Beetle")) {
-                this.bBeetle--;
+                bugList.remove(HiveGameState.piece.BBEETLE);
             }
             else if(piece.getType().equals("Grasshopper")) {
-                this.bGrasshopper--;
+                bugList.remove(HiveGameState.piece.BGHOPPER);
             }
             this.player2Pieces--;
             board[boardX][boardY] = piece;
             this.setTurn(WHITE_TURN);
             return true;
         }
-        */return false;
+        return false;
     }
 
     /**
