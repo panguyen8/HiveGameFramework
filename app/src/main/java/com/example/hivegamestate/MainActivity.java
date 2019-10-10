@@ -11,12 +11,14 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity{
 
-    final EditText theText = findViewById(R.id.EditText);
+    EditText theText;
     QueenBee qb = new QueenBee();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        theText = (EditText) findViewById(R.id.EditText);
 
         //initialize HiveGameState
         HiveGameState hiveGameState = new HiveGameState();
