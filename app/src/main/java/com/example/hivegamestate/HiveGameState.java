@@ -39,19 +39,6 @@ public class HiveGameState {
 
     //Basic constructor
     public HiveGameState() {
-        this.turn = WHITE_TURN; // White goes first?
-        this.player1Pieces = 11;
-        this.player2Pieces = 11;
-        this.whiteBees = 1;
-        this.blackBees = 1;
-        this.whiteSpiders = 2;
-        this.blackSpiders = 2;
-        this.whiteBeetles = 2;
-        this.blackBeetles = 2;
-        this.whiteAnts = 3;
-        this.blackAnts = 3;
-        this.whiteGHoppers = 3;
-        this.blackGHoppers = 3;
 
     }
 
@@ -92,7 +79,7 @@ public class HiveGameState {
                 board;
     }
 
-    // Following methods done by Samuel Nguyen
+    // Following methods started by Samuel Nguyen
     // Feel free to edit these (if so, delete this comment)
 
     /**

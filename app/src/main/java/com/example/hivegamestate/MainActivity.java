@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     final EditText theText = findViewById(R.id.EditText);
     QueenBee qb = new QueenBee();
