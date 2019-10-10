@@ -21,7 +21,6 @@ public class HiveGameState {
     //Stephen added this instance vars, delete if needed
     final int WHITE_TURN = 1;
 
-    //holds a 2d array of strings for what the board would look like
     //using a 2d array for now, idk if we will used a linked list later on
     //once we get the class for the pieces set up, we can change string to that new class
     private Piece[][] board = new Piece[100][100];
@@ -41,23 +40,38 @@ public class HiveGameState {
     Piece ant = new Piece("Ant");
 
     public ArrayList<piece> bugList = new ArrayList<>();
-
     enum piece {
         BBEE, BSPIDER, BANT, BGHOPPER, BBEETLE, WBEE, WSPIDER, WANT, WGHOPPER, WBEETLE;
     }
 
+
     //Basic constructor
     public HiveGameState() {
 
+        //1 BBEE, 2 BSPIDERS, 3 BANT, 3 BGHOPPER, 2,BBEETLE
         bugList.add(piece.BBEE);
         bugList.add(piece.BSPIDER);
+        bugList.add(piece.BSPIDER);
+        bugList.add(piece.BANT);
+        bugList.add(piece.BANT);
         bugList.add(piece.BANT);
         bugList.add(piece.BGHOPPER);
+        bugList.add(piece.BGHOPPER);
+        bugList.add(piece.BGHOPPER);
         bugList.add(piece.BBEETLE);
+        bugList.add(piece.BBEETLE);
+
+        //1 BBEE, 2 WSPIDERS, 3 WANT, 3 WGHOPPER, 2,WBEETLE
         bugList.add(piece.WBEE);
         bugList.add(piece.WSPIDER);
+        bugList.add(piece.WSPIDER);
+        bugList.add(piece.WANT);
+        bugList.add(piece.WANT);
         bugList.add(piece.WANT);
         bugList.add(piece.WGHOPPER);
+        bugList.add(piece.WGHOPPER);
+        bugList.add(piece.WGHOPPER);
+        bugList.add(piece.WBEETLE);
         bugList.add(piece.WBEETLE);
 
         this.turn = WHITE_TURN; // White goes first?
