@@ -1,13 +1,13 @@
 package com.example.hivegamestate;
 
 public class Piece {
-    private int type;
+    private String type;
 
-    public Piece(int pieceType) {
+    public Piece(String pieceType) {
         type = pieceType;
     }
 
-    int getType() {
+    String getType() {
         return this.type;
     }
 }

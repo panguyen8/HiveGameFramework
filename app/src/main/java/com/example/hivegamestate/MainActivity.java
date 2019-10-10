@@ -12,7 +12,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     EditText theText;
-    QueenBee qb = new QueenBee();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //call all methods of firstInstance
                 //each method also requires a String to be appended to the editText object
-                firstInstance.placePiece(1, qb);
+                firstInstance.placePiece(1, firstInstance.wAnt1, 50, 50);
                 theText.append("Piece was placed");
                 firstInstance.movePiece(1);
                 theText.append("Piece was moved");

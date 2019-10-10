@@ -13,11 +13,11 @@ public class HiveGameState {
     //holds a 2d array of strings for what the board would look like
     //using a 2d array for now, idk if we will used a linked list later on
     //once we get the class for the pieces set up, we can change string to that new class
-    static String[][] board = new String[100][100];
+    private Piece[][] board = new Piece[100][100];
 
     //holds the value for how many pieces the white and black player have in their hand (not on board)
-    static int wBee, wSpider, wAnt, wBeetle, wGrasshopper;
-    static int bBee, bSpider, bAnt, bBeetle, bGrasshopper;
+    private int wBee, wSpider, wAnt, wBeetle, wGrasshopper;
+    private int bBee, bSpider, bAnt, bBeetle, bGrasshopper;
 
     //int variable to tell whose turn it is
     //If 1, white moves, if 2, black moves
@@ -29,18 +29,8 @@ public class HiveGameState {
     private int player1Pieces;
     private int player2Pieces;
 
-    //How many of each piece each player has
-    private int whiteBees;
-    private int blackBees;
-    private int whiteSpiders;
-    private int blackSpiders;
-    private int whiteAnts;
-    private int blackAnts;
-    private int whiteBeetles;
-    private int blackBeetles;
-    private int whiteGHoppers;
-    private int blackGHoppers;
-
+    // Creates pieces
+    Piece wAnt1 = new Piece("Ant");
     //Basic constructor
     public HiveGameState() {
 
@@ -50,19 +40,6 @@ public class HiveGameState {
     public HiveGameState(HiveGameState hgs) {
         hgs.turn = this.turn;
         //two for loops
-        hgs.board = this.board;
-        hgs.player1Pieces = this.player1Pieces;
-        hgs.player2Pieces = this.player2Pieces;
-        hgs.whiteBees = this.whiteBees;
-        hgs.blackBees = this.blackBees;
-        hgs.whiteSpiders = this.whiteSpiders;
-        hgs.blackSpiders = this.blackSpiders;
-        hgs.whiteBeetles = this.whiteBeetles;
-        hgs.blackBeetles = this.blackBeetles;
-        hgs.whiteAnts = this.whiteAnts;
-        hgs.blackAnts = this.blackAnts;
-        hgs.whiteGHoppers = this.whiteGHoppers;
-        hgs.blackGHoppers = this.blackGHoppers;
     }
 
     //Returns a formatted string that describes the game's state
@@ -94,46 +71,48 @@ public class HiveGameState {
      * @param id: the id of whose turn it is
      * @return true if successful, false otherwise
      */
-    boolean placePiece(int id, Piece piece) {
+    boolean placePiece(int id, Piece piece, int boardX, int boardY) {
         if (id == WHITE_TURN) {
             // Checks piece being placed
-            if(piece instanceof QueenBee) {
-                this.whiteAnts--;
+            if(piece.getType().equals("QueenBee")) {
+                this.wBee--;
             }
-            else if(piece instanceof Spider) {
-                this.whiteSpiders--;
+            else if(piece.equals("Spider")) {
+                this.wSpider--;
             }
-            else if(piece instanceof Ant) {
-                this.whiteAnts--;
+            else if(piece.equals("Ant")) {
+                this.wAnt--;
             }
-            else if(piece instanceof Beetle) {
-                this.whiteAnts--;
+            else if(piece.equals("Beetle")) {
+                this.wBeetle--;
             }
-            else if(piece instanceof Grasshopper) {
-                this.whiteGHoppers--;
+            else if(piece.equals("Grasshopper")) {
+                this.wGrasshopper--;
             }
             this.player1Pieces--;
+            board[boardX][boardY] = piece;
             this.setTurn(BLACK_TURN);
             return true;
         }
         else if (id == BLACK_TURN) {
             // Checks piece being placed
-            if(piece instanceof QueenBee) {
-                this.blackBees--;
+            if(piece.equals("QueenBee")) {
+                this.bBee--;
             }
-            else if(piece instanceof Spider) {
-                this.blackSpiders--;
+            else if(piece.equals("Spider")) {
+                this.bSpider--;
             }
-            else if(piece instanceof Ant) {
-                this.blackAnts--;
+            else if(piece.equals("Ant")) {
+                this.bAnt--;
             }
-            else if(piece instanceof Beetle) {
-                this.blackBeetles--;
+            else if(piece.equals("Beetle")) {
+                this.bBeetle--;
             }
-            else if(piece instanceof Grasshopper) {
-                this.blackGHoppers--;
+            else if(piece.equals("Grasshopper")) {
+                this.bGrasshopper--;
             }
             this.player2Pieces--;
+            board[boardX][boardY] = piece;
             this.setTurn(WHITE_TURN);
             return true;
         }
