@@ -11,6 +11,8 @@ Remove static variables
 
  */
 
+import android.net.wifi.p2p.WifiP2pGroup;
+
 import java.util.ArrayList;
 
 public class HiveGameState {
@@ -112,22 +114,22 @@ public class HiveGameState {
      *
      */
     boolean placePiece(int id, Piece piece, int boardX, int boardY) {
-        /*if (id == WHITE_TURN) {
+        if (id == WHITE_TURN) {
             // Checks piece being placed
             if(piece.getType().equals("QueenBee")) {
-                this.wBee--;
+                bugList.remove(HiveGameState.piece.WBEE);
             }
-            else if(piece.equals("Spider")) {
-                this.wSpider--;
+            else if(piece.getType().equals("Spider")) {
+                bugList.remove(HiveGameState.piece.WSPIDER);
             }
-            else if(piece.equals("Ant")) {
-                this.wAnt--;
+            else if(piece.getType().equals("Ant")) {
+                bugList.remove(HiveGameState.piece.WANT);
             }
-            else if(piece.equals("Beetle")) {
-                this.wBeetle--;
+            else if(piece.getType().equals("Beetle")) {
+                bugList.remove(HiveGameState.piece.WBEETLE);
             }
-            else if(piece.equals("Grasshopper")) {
-                this.wGrasshopper--;
+            else if(piece.getType().equals("Grasshopper")) {
+                bugList.remove(HiveGameState.piece.WGHOPPER);
             }
             this.player1Pieces--;
             board[boardX][boardY] = piece;
@@ -136,27 +138,27 @@ public class HiveGameState {
         }
         else if (id == BLACK_TURN) {
             // Checks piece being placed
-            if(piece.equals("QueenBee")) {
-                this.bBee--;
+            if(piece.getType().equals("QueenBee")) {
+                bugList.remove(HiveGameState.piece.BBEE);
             }
-            else if(piece.equals("Spider")) {
-                this.bSpider--;
+            else if(piece.getType().equals("Spider")) {
+                bugList.remove(HiveGameState.piece.BSPIDER);
             }
-            else if(piece.equals("Ant")) {
-                this.bAnt--;
+            else if(piece.getType().equals("Ant")) {
+                bugList.remove(HiveGameState.piece.BANT);
             }
-            else if(piece.equals("Beetle")) {
-                this.bBeetle--;
+            else if(piece.getType().equals("Beetle")) {
+                bugList.remove(HiveGameState.piece.BBEETLE);
             }
-            else if(piece.equals("Grasshopper")) {
-                this.bGrasshopper--;
+            else if(piece.getType().equals("Grasshopper")) {
+                bugList.remove(HiveGameState.piece.BGHOPPER);
             }
             this.player2Pieces--;
             board[boardX][boardY] = piece;
             this.setTurn(WHITE_TURN);
             return true;
         }
-        */return false;
+        return false;
     }
 
     /**
@@ -165,11 +167,43 @@ public class HiveGameState {
      * @param id: the id of whose turn it is
      * @return true if successful, false otherwise
      */
-    boolean movePiece(int id) {
+    boolean movePiece(int id, Piece piece, int startX, int startY, int newX, int newY) {
         if(id == WHITE_TURN) {
+            if(piece.getType().equals("QueenBee")) {
+
+            }
+            else if(piece.getType().equals("Spider")) {
+
+            }
+            else if(piece.getType().equals("Ant")) {
+
+            }
+            else if(piece.getType().equals("Beetle")) {
+
+            }
+            else if(piece.getType().equals("Grasshopper")) {
+
+            }
+            this.setTurn(BLACK_TURN);
             return true;
         }
         else if(id == BLACK_TURN) {
+            if(piece.getType().equals("QueenBee")) {
+
+            }
+            else if(piece.getType().equals("Spider")) {
+
+            }
+            else if(piece.getType().equals("Ant")) {
+
+            }
+            else if(piece.getType().equals("Beetle")) {
+
+            }
+            else if(piece.getType().equals("Grasshopper")) {
+
+            }
+            this.setTurn(WHITE_TURN);
             return true;
         }
         return false;
