@@ -29,6 +29,7 @@ public class HiveGameState {
     static final int WHITE_TURN = 1;
 
     //Basic constructor
+
     public HiveGameState()
     {
         this.turn = 1;
@@ -64,6 +65,7 @@ public class HiveGameState {
         hgs.whiteGHoppers = this.whiteGHoppers;
         hgs.blackGHoppers = this.blackGHoppers;
     }
+
     //holds a 2d array of strings for what the board would look like
     //using a 2d array for now, idk if we will used a linked list later on
     //once we get the class for the pieces set up, we can change string to that new class
@@ -72,6 +74,8 @@ public class HiveGameState {
     //holds the value for how many pieces the white and black player have in their hand (not on board)
     static int wBee, wSpider, wAnt, wBeetle, wGrasshopper;
     static int bBee, bSpider, bAnt, bBeetle, bGrasshopper;
+
+
 
     //Returns a formatted string that describes the game's state
     @Override
@@ -154,4 +158,6 @@ public class HiveGameState {
     void setTurn(int id) {
         this.turn = id;
     }
+
+
 }

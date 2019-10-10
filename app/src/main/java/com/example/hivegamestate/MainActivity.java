@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity{
 
-    final EditText theText = findViewById(R.id.theEditText);
+    final EditText theText = findViewById(R.id.EditText);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
