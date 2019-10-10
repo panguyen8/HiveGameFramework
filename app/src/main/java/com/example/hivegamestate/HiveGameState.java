@@ -1,4 +1,8 @@
 package com.example.hivegamestate;
+/*
+Remove static variables
+
+ */
 
 public class HiveGameState {
     static final int BLACK_TURN = 0;
@@ -45,6 +49,7 @@ public class HiveGameState {
     //Copy constructor (Stephen)
     public HiveGameState(HiveGameState hgs) {
         hgs.turn = this.turn;
+        //two for loops
         hgs.board = this.board;
         hgs.player1Pieces = this.player1Pieces;
         hgs.player2Pieces = this.player2Pieces;
