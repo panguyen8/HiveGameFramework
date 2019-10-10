@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public Boolean check(HiveGameState stateOne, HiveGameState stateTwo) {
-        if(stateOne.toString() == stateTwo.toString()) {
+        if(stateOne.toString().equals(stateTwo.toString())) {
             return true;
         }
         return false;
