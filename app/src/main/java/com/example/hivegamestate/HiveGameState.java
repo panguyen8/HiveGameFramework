@@ -130,16 +130,16 @@ public class HiveGameState {
             if(piece.getType().equals("QueenBee")) {
                 this.wBee--;
             }
-            else if(piece.equals("Spider")) {
+            else if(piece.getType().equals("Spider")) {
                 this.wSpider--;
             }
-            else if(piece.equals("Ant")) {
+            else if(piece.getType().equals("Ant")) {
                 this.wAnt--;
             }
-            else if(piece.equals("Beetle")) {
+            else if(piece.getType().equals("Beetle")) {
                 this.wBeetle--;
             }
-            else if(piece.equals("Grasshopper")) {
+            else if(piece.getType().equals("Grasshopper")) {
                 this.wGrasshopper--;
             }
             this.player1Pieces--;
@@ -149,19 +149,19 @@ public class HiveGameState {
         }
         else if (id == BLACK_TURN) {
             // Checks piece being placed
-            if(piece.equals("QueenBee")) {
+            if(piece.getType().equals("QueenBee")) {
                 this.bBee--;
             }
-            else if(piece.equals("Spider")) {
+            else if(piece.getType().equals("Spider")) {
                 this.bSpider--;
             }
-            else if(piece.equals("Ant")) {
+            else if(piece.getType().equals("Ant")) {
                 this.bAnt--;
             }
-            else if(piece.equals("Beetle")) {
+            else if(piece.getType().equals("Beetle")) {
                 this.bBeetle--;
             }
-            else if(piece.equals("Grasshopper")) {
+            else if(piece.getType().equals("Grasshopper")) {
                 this.bGrasshopper--;
             }
             this.player2Pieces--;
@@ -178,12 +178,42 @@ public class HiveGameState {
      * @param id: the id of whose turn it is
      * @return true if successful, false otherwise
      */
-    boolean movePiece(int id) {
+    boolean movePiece(int id, Piece piece, int startX, int startY, int newX, int newY) {
         if(id == WHITE_TURN) {
+            if(piece.getType().equals("QueenBee")) {
+
+            }
+            else if(piece.getType().equals("Spider")) {
+
+            }
+            else if(piece.getType().equals("Ant")) {
+
+            }
+            else if(piece.getType().equals("Beetle")) {
+
+            }
+            else if(piece.getType().equals("Grasshopper")) {
+
+            }
             this.setTurn(BLACK_TURN);
             return true;
         }
         else if(id == BLACK_TURN) {
+            if(piece.getType().equals("QueenBee")) {
+
+            }
+            else if(piece.getType().equals("Spider")) {
+
+            }
+            else if(piece.getType().equals("Ant")) {
+
+            }
+            else if(piece.getType().equals("Beetle")) {
+
+            }
+            else if(piece.getType().equals("Grasshopper")) {
+
+            }
             this.setTurn(WHITE_TURN);
             return true;
         }
