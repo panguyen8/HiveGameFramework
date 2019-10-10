@@ -103,7 +103,13 @@ public class HiveGameState {
      * and sets the turn to that of the other player.
      *
      * @param id: the id of whose turn it is
+     * @param piece: the piece being moved
+     * @param boardX: row index of where the piece is being placed on board
+     * @param boardY: col index
+     *
      * @return true if successful, false otherwise
+     *
+     *
      */
     boolean placePiece(int id, Piece piece, int boardX, int boardY) {
         /*if (id == WHITE_TURN) {
