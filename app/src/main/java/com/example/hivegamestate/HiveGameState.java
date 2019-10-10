@@ -103,13 +103,45 @@ public class HiveGameState {
      * @param id: the id of whose turn it is
      * @return true if successful, false otherwise
      */
-    boolean placePiece(int id) {
+    boolean placePiece(int id, Piece piece) {
         if (id == WHITE_TURN) {
+            // Checks piece being placed
+            if(piece instanceof QueenBee) {
+                this.whiteBees--;
+            }
+            else if(piece instanceof Spider) {
+                this.whiteSpiders--;
+            }
+            else if(piece instanceof Ant) {
+                this.whiteAnts--;
+            }
+            else if(piece instanceof Beetle) {
+                this.whiteAnts--;
+            }
+            else if(piece instanceof Grasshopper) {
+                this.whiteGHoppers--;
+            }
             this.player1Pieces--;
             this.setTurn(BLACK_TURN);
             return true;
         }
         else if (id == BLACK_TURN) {
+            // Checks piece being placed
+            if(piece instanceof QueenBee) {
+                this.blackBees--;
+            }
+            else if(piece instanceof Spider) {
+                this.blackSpiders--;
+            }
+            else if(piece instanceof Ant) {
+                this.blackAnts--;
+            }
+            else if(piece instanceof Beetle) {
+                this.blackBeetles--;
+            }
+            else if(piece instanceof Grasshopper) {
+                this.blackGHoppers--;
+            }
             this.player2Pieces--;
             this.setTurn(WHITE_TURN);
             return true;
