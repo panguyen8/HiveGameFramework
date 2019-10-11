@@ -130,7 +130,12 @@ public class HiveGameState {
      * Solution: I used toString().
      */
     boolean placePiece(int id, piece newPiece, int boardX, int boardY) {
+        // Cannot place pieces if there are no more to place
         if (id == WHITE_TURN) {
+            if(player1Pieces == 0) {
+                return false;
+            }
+
             // Checks piece being placed
             if(newPiece.toString().equals("WBEE")) {
                 bugList.remove(HiveGameState.piece.WBEE);
@@ -147,9 +152,14 @@ public class HiveGameState {
             else if(newPiece.toString().equals("WGHOPPER")) {
                 bugList.remove(HiveGameState.piece.WGHOPPER);
             }
-            this.player0Pieces--;
+            this.player1Pieces--;
         }
         else if (id == BLACK_TURN) {
+            // Cannot place pieces if there are no more to place
+            if(player0Pieces == 0) {
+                return false;
+            }
+
             // Checks piece being placed
             if(newPiece.toString().equals("BBEE")) {
                 bugList.remove(HiveGameState.piece.BBEE);
@@ -166,14 +176,20 @@ public class HiveGameState {
             else if(newPiece.toString().equals("BGHOPPER")) {
                 bugList.remove(HiveGameState.piece.BGHOPPER);
             }
-            this.player1Pieces--;
+            this.player0Pieces--;
         }
         // Cannot place piece at occupied space
         if(board[boardX][boardY] != null) {
             return false;
         }
+
         board[boardX][boardY] = newPiece;
-        this.setTurn(BLACK_TURN);
+        if(id == WHITE_TURN) {
+            this.setTurn(BLACK_TURN);
+        }
+        else if(id == BLACK_TURN) {
+            this.setTurn(WHITE_TURN);
+        }
         return true;
     }
 
