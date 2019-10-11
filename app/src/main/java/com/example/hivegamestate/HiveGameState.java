@@ -1,21 +1,25 @@
-/*
-*
-*
-*
-*
+/**
+ *@author
+ *@author
+ *@author
+ *@author Stephen Nguyen
+ *
+ *@version 10/10/19
  */
 
 package com.example.hivegamestate;
 
+//Comment by Stephen
+//I assume this is used in network play, delete if it's unnecessary
 import android.net.wifi.p2p.WifiP2pGroup;
 
 import java.util.ArrayList;
 
 public class HiveGameState {
-    final int BLACK_TURN = 0;
+    private final int BLACK_TURN = 0;
 
     //Stephen added this instance vars, delete if needed
-    final int WHITE_TURN = 1;
+    private final int WHITE_TURN = 1;
 
     //using a 2d array for now, idk if we will used a linked list later on
     //once we get the class for the pieces set up, we can change string to that new class
@@ -69,7 +73,6 @@ public class HiveGameState {
         this.turn = WHITE_TURN; // White goes first?
         this.player0Pieces = 11;
         this.player1Pieces = 11;
-
     }
 
     //Copy constructor (Stephen)
@@ -91,19 +94,19 @@ public class HiveGameState {
     //Returns a formatted string that describes the game's state
     @Override
     public String toString() {
-        return "Turn: " + turn + "/n" +
-                "BLACK_TURN: " + BLACK_TURN + "/n" +
-                "WHITE_TURN: " + WHITE_TURN + "/n" +
-                "White Bee: " + piece.WBEE + "/n" +
-                "White Spider: " + piece.WSPIDER + "/n" +
-                "White Ant: " + piece.WANT + "/n" +
-                "White Beetle: " + piece.WBEETLE + "/n" +
-                "White Grasshopper: " + piece.WGHOPPER + "/n" +
-                "Black Bee: " + piece.BBEE + "/n" +
-                "Black Spider: " + piece.BSPIDER + "/n" +
-                "Black Ant: " + piece.BANT + "/n" +
-                "Black Beetle: " + piece.BBEETLE + "/n" +
-                "Black Grasshopper: " + piece.BGHOPPER + "/n" +
+        return "Turn: " + turn + "\n" +
+                "BLACK_TURN: " + BLACK_TURN + "\n" +
+                "WHITE_TURN: " + WHITE_TURN + "\n" +
+                "White Bee: " + piece.WBEE + "\n" +
+                "White Spider: " + piece.WSPIDER + "\n" +
+                "White Ant: " + piece.WANT + "\n" +
+                "White Beetle: " + piece.WBEETLE + "\n" +
+                "White Grasshopper: " + piece.WGHOPPER + "\n" +
+                "Black Bee: " + piece.BBEE + "\n" +
+                "Black Spider: " + piece.BSPIDER + "\n" +
+                "Black Ant: " + piece.BANT + "\n" +
+                "Black Beetle: " + piece.BBEETLE + "\n" +
+                "Black Grasshopper: " + piece.BGHOPPER + "\n" +
                 board;
     }
 

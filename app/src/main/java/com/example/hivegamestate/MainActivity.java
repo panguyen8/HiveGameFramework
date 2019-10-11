@@ -78,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
                     theText.append(fourthInstance.toString());
                 }
             }
-        });
+        }
+        );
 
     }
 
