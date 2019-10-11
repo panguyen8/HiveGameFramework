@@ -71,11 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 //fourth instance deep copy made from the third instance
                 HiveGameState fourthInstance = new HiveGameState(thirdInstance);
 
-                //append second and fourth state strings to theText if both are equal
-                if (check(secondInstance, fourthInstance)) {
-                    theText.append(secondInstance.toString());
-                    theText.append(fourthInstance.toString());
-                }
+                //append second and fourth state strings to theText, then check if both are equal
+                theText.append(secondInstance.toString());
+                theText.append(fourthInstance.toString());
+                check(secondInstance, fourthInstance);
             }
         }
         );
