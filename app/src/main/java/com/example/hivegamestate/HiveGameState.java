@@ -6,10 +6,6 @@
  */
 
 package com.example.hivegamestate;
-/*
-Remove static variables
-
- */
 
 import android.net.wifi.p2p.WifiP2pGroup;
 
@@ -32,8 +28,8 @@ public class HiveGameState {
     private int turn = 1;  // Edit by Samuel Nguyen
 
     //Represents how many total pieces each player has
+    private int player0Pieces;
     private int player1Pieces;
-    private int player2Pieces;
 
     public ArrayList<piece> bugList = new ArrayList<>();
     enum piece {
@@ -71,15 +67,15 @@ public class HiveGameState {
         bugList.add(piece.WBEETLE);
 
         this.turn = WHITE_TURN; // White goes first?
+        this.player0Pieces = 11;
         this.player1Pieces = 11;
-        this.player2Pieces = 11;
 
     }
 
     //Copy constructor (Stephen)
+    // Some edits by Samuel Nguyen
     public HiveGameState(HiveGameState hgs) {
-        hgs.turn = this.turn;
-
+        this.turn = hgs.turn;
 
         //Copies each board index/cell
         for (int i = 0; i < board.length; i++)
@@ -89,6 +85,7 @@ public class HiveGameState {
                 this.board[i][j] = hgs.board[i][j];
             }
         }
+        this.bugList = hgs.bugList;
     }
 
     //Returns a formatted string that describes the game's state
@@ -150,10 +147,7 @@ public class HiveGameState {
             else if(newPiece.toString().equals("WGHOPPER")) {
                 bugList.remove(HiveGameState.piece.WGHOPPER);
             }
-            this.player1Pieces--;
-            board[boardX][boardY] = newPiece;
-            this.setTurn(BLACK_TURN);
-            return true;
+            this.player0Pieces--;
         }
         else if (id == BLACK_TURN) {
             // Checks piece being placed
@@ -172,12 +166,15 @@ public class HiveGameState {
             else if(newPiece.toString().equals("BGHOPPER")) {
                 bugList.remove(HiveGameState.piece.BGHOPPER);
             }
-            this.player2Pieces--;
-            board[boardX][boardY] = newPiece;
-            this.setTurn(WHITE_TURN);
-            return true;
+            this.player1Pieces--;
         }
-        return false;
+        // Cannot place piece at occupied space
+        if(board[boardX][boardY] != null) {
+            return false;
+        }
+        board[boardX][boardY] = newPiece;
+        this.setTurn(BLACK_TURN);
+        return true;
     }
 
     /**
@@ -198,6 +195,22 @@ public class HiveGameState {
             return false;
         }
 
+        // Cannot move pieces of opposite color
+        if(id == WHITE_TURN) {
+            if(pieceOnBoard.toString().equals("BBEE") || pieceOnBoard.toString().equals("BSPIDER") ||
+                    pieceOnBoard.toString().equals("BANT") || pieceOnBoard.toString().equals("BBEETLE")
+                    || pieceOnBoard.toString().equals("BGHOPPER")) {
+                return false;
+            }
+        }
+        else if(id == BLACK_TURN) {
+            if(pieceOnBoard.toString().equals("WBEE") || pieceOnBoard.toString().equals("WSPIDER") ||
+                    pieceOnBoard.toString().equals("WANT") || pieceOnBoard.toString().equals("WBEETLE")
+                    || pieceOnBoard.toString().equals("WGHOPPER")) {
+                return false;
+            }
+        }
+
         // Cannot move to an occupied space (except beetles, not sure how to implement that)
         if(board[newX][newY] != null) {
             return false;
@@ -214,7 +227,6 @@ public class HiveGameState {
         else if(id == BLACK_TURN) {
             this.setTurn(WHITE_TURN);
         }
-
         return true;
     }
 

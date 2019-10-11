@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 firstInstance.placePiece(0, firstInstance.bugList.get(0), 50, 50);
                 theText.append("Player 0 moved " + firstInstance.bugList.get(0)
                         + " to position [50][50]\n");
-                firstInstance.movePiece(1, firstInstance.bugList.get(0), 50, 50, 60, 60);
-                theText.append("Player 1 moved " + firstInstance.bugList.get(15) +
+                firstInstance.movePiece(0, firstInstance.bugList.get(0), 50, 50, 60, 60);
+                theText.append("Player 0 moved " + firstInstance.bugList.get(0) +
                         " to position [60][60] from [50][50]\n");
                 firstInstance.undo(0);
                 theText.append("Moves undone by player 0.\n");
