@@ -82,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Checks to see whether two HiveGameStates have the same
+     * result from the toString() method
+     *
+     * arguments: HiveGameState arguments
+     * @return true if successful, false otherwise
+     */
     public Boolean check(HiveGameState stateOne, HiveGameState stateTwo) {
         if(stateOne.toString().equals(stateTwo.toString())) {
             return true;
