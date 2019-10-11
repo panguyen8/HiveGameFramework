@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
 
                 //call all methods of firstInstance
                 //each method also requires a String to be appended to the editText object
-                firstInstance.placePiece(0, firstInstance.bugList.get(0), 50, 50);
+                firstInstance.placePiece(0, firstInstance.bugList.get(0), 5, 5);
                 theText.append("Player 0 moved " + firstInstance.bugList.get(0)
-                        + " to position [50][50]\n");
-                firstInstance.movePiece(0, firstInstance.bugList.get(0), 50, 50, 60, 60);
+                        + " to position [5][5]\n");
+                firstInstance.movePiece(0, firstInstance.bugList.get(0), 5, 5, 6, 6);
                 theText.append("Player 0 moved " + firstInstance.bugList.get(0) +
-                        " to position [60][60] from [50][50]\n");
+                        " to position [6][6] from [5][5]\n");
                 firstInstance.undo(0);
                 theText.append("Moves undone by player 0.\n");
                 firstInstance.zoom(1);
