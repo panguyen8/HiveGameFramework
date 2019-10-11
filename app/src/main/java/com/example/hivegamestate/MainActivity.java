@@ -47,20 +47,22 @@ public class MainActivity extends AppCompatActivity {
 
                 //call all methods of firstInstance
                 //each method also requires a String to be appended to the editText object
-                firstInstance.placePiece(1, firstInstance.bugList.get(0), 50, 50);
-                theText.append("Piece was placed");
+                firstInstance.placePiece(0, firstInstance.bugList.get(0), 50, 50);
+                theText.append("Player 0 moved " + firstInstance.bugList.get(0)
+                        + " to position [50][50]\n");
                 firstInstance.movePiece(1, firstInstance.bugList.get(0), 50, 50, 60, 60);
-                theText.append("Piece was moved");
+                theText.append("Player 1 moved " + firstInstance.bugList.get(15) +
+                        " to position [60][60] from [50][50]\n");
                 firstInstance.undo(0);
-                theText.append("Piece was undoed");
-                firstInstance.quit(0);
-                theText.append("game was quit");
+                theText.append("Moves undone by player 0.\n");
+                firstInstance.quit(1);
+                theText.append("Game quit by player 1.\n");
                 firstInstance.zoom(1);
-                theText.append("Game was zoomed in");
-                firstInstance.getTurn();
-                theText.append("Got the turn");
+                theText.append("Game was zoomed in by player 1.\n");
+                int turn = firstInstance.getTurn();
+                theText.append("Got the turn, result is " + turn +".\n");
                 firstInstance.setTurn(0);
-                theText.append("Set the turn");
+                theText.append("Set the turn to player 0's turn.\n");
 
                 theText.append("randomString");
 

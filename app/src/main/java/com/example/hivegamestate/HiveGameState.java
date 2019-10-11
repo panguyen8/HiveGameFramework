@@ -203,21 +203,19 @@ public class HiveGameState {
             return false;
         }
 
+        board[newX][newY] = pieceOnBoard;
+        // Must remove what was at starting space
+        board[startX][startY] = null;
+
+        //Set next player turn accordingly.
         if(id == WHITE_TURN) {
-            board[newX][newY] = pieceOnBoard;
-            // Must remove what was at starting space
-            board[startX][startY] = null;
             this.setTurn(BLACK_TURN);
-            return true;
         }
         else if(id == BLACK_TURN) {
-            board[newX][newY] = pieceOnBoard;
-            // Must remove what was at starting space
-            board[startX][startY] = null;
             this.setTurn(WHITE_TURN);
-            return true;
         }
-        return false;
+
+        return true;
     }
 
     /**
@@ -264,10 +262,18 @@ public class HiveGameState {
         return false;
     }
 
+    /**
+     * Gets the id of whoever's move it is
+     * @return id of player to move
+     */
     int getTurn() {
         return this.turn;
     }
 
+    /**
+     * Sets the player to move
+     * @param id: id of player that is being set to move
+     */
     void setTurn(int id) {
         this.turn = id;
     }
