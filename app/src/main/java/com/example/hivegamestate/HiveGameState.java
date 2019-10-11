@@ -92,20 +92,20 @@ public class HiveGameState {
     //Returns a formatted string that describes the game's state
     @Override
     public String toString() {
+
         return "Turn: " + turn + "\n" +
                 "BLACK_TURN: " + BLACK_TURN + "\n" +
                 "WHITE_TURN: " + WHITE_TURN + "\n" +
-                "White Bee: " + piece.WBEE + "\n" +
-                "White Spider: " + piece.WSPIDER + "\n" +
-                "White Ant: " + piece.WANT + "\n" +
-                "White Beetle: " + piece.WBEETLE + "\n" +
-                "White Grasshopper: " + piece.WGHOPPER + "\n" +
-                "Black Bee: " + piece.BBEE + "\n" +
-                "Black Spider: " + piece.BSPIDER + "\n" +
-                "Black Ant: " + piece.BANT + "\n" +
-                "Black Beetle: " + piece.BBEETLE + "\n" +
-                "Black Grasshopper: " + piece.BGHOPPER + "\n" +
-                board;
+                "White Bee: " + piece.WBEE.name() + 1 + "\n" +
+                "White Spider: " + piece.WSPIDER.name() + 3 + "\n" +
+                "White Ant: " + piece.WANT.name() + 3 + "\n" +
+                "White Beetle: " + piece.WBEETLE.name() + 2 + "\n" +
+                "White Grasshopper: " + piece.WGHOPPER.name() + 3 + "\n" +
+                "Black Bee: " + piece.BBEE.name() + 1 +"\n" +
+                "Black Spider: " + piece.BSPIDER.name() + 3 + "\n" +
+                "Black Ant: " + piece.BANT.name() + 3 +"\n" +
+                "Black Beetle: " + piece.BBEETLE.name() + 2 + "\n" +
+                "Black Grasshopper: " + piece.BGHOPPER.name() + 1 + "\n";
     }
 
     // Following methods started by Samuel Nguyen
