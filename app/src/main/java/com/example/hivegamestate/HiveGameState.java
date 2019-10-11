@@ -23,11 +23,10 @@ public class HiveGameState {
 
     //using a 2d array for now, idk if we will used a linked list later on
     //once we get the class for the pieces set up, we can change string to that new class
-    private Piece[][] board = new Piece[100][100];
-
+    private piece[][] board = new piece[100][100];
 
     //int variable to tell whose turn it is
-    //If 1, white moves, if 2, black moves
+    //If 1, white moves, if 0, black moves
     //Removed static for now, not sure if it's needed
     //Let me (Stephen) know if it is
     private int turn = 1;  // Edit by Samuel Nguyen
@@ -35,9 +34,6 @@ public class HiveGameState {
     //Represents how many total pieces each player has
     private int player1Pieces;
     private int player2Pieces;
-
-    // This is so MainActivity compiles, delete when necessary
-    Piece ant = new Piece("Ant");
 
     public ArrayList<piece> bugList = new ArrayList<>();
     enum piece {
@@ -115,63 +111,69 @@ public class HiveGameState {
     }
 
     // Following methods started by Samuel Nguyen
-    // Feel free to edit these (if so, delete this comment)
 
     /**
      * Places a piece on the board, subtracts one from total piece count and appropriate piece count,
      * and sets the turn to that of the other player.
      *
      * @param id: the id of whose turn it is
-     * @param piece: the piece being moved
+     * @param newPiece: the piece being moved
      * @param boardX: row index of where the piece is being placed on board
      * @param boardY: col index
      *
      * @return true if successful, false otherwise
-     *
-     *
      */
-    boolean placePiece(int id, Piece piece, int boardX, int boardY) {
+
+    // Below citation by Samuel Nguyen
+    /**
+     * External Citation
+     * Date: October 10, 2019
+     * Problem: I got "'equals()' between objects of inconvertible types 'piece' and 'String'".
+     * Resource: https://developer.android.com/reference/java/lang/Enum
+     * Solution: I used toString().
+     */
+    boolean placePiece(int id, piece newPiece, int boardX, int boardY) {
         if (id == WHITE_TURN) {
             // Checks piece being placed
-            if(piece.getType().equals("QueenBee")) {
+            if(newPiece.toString().equals("WBEE")) {
                 bugList.remove(HiveGameState.piece.WBEE);
             }
-            else if(piece.getType().equals("Spider")) {
+            else if(newPiece.toString().equals("WSPIDER")) {
                 bugList.remove(HiveGameState.piece.WSPIDER);
             }
-            else if(piece.getType().equals("Ant")) {
+            else if(newPiece.toString().equals("WANT")) {
                 bugList.remove(HiveGameState.piece.WANT);
             }
-            else if(piece.getType().equals("Beetle")) {
+            else if(newPiece.toString().equals("WBEETLE")) {
                 bugList.remove(HiveGameState.piece.WBEETLE);
             }
-            else if(piece.getType().equals("Grasshopper")) {
+            else if(newPiece.toString().equals("WGHOPPER")) {
                 bugList.remove(HiveGameState.piece.WGHOPPER);
             }
             this.player1Pieces--;
-            board[boardX][boardY] = piece;
+            board[boardX][boardY] = newPiece;
             this.setTurn(BLACK_TURN);
             return true;
         }
         else if (id == BLACK_TURN) {
             // Checks piece being placed
-            if(piece.getType().equals("QueenBee")) {
+            if(newPiece.toString().equals("BBEE")) {
                 bugList.remove(HiveGameState.piece.BBEE);
             }
-            else if(piece.getType().equals("Spider")) {
+            else if(newPiece.toString().equals("BSPIDER")) {
                 bugList.remove(HiveGameState.piece.BSPIDER);
             }
-            else if(piece.getType().equals("Ant")) {
+            else if(newPiece.toString().equals("BANT")) {
                 bugList.remove(HiveGameState.piece.BANT);
             }
-            else if(piece.getType().equals("Beetle")) {
+            else if(newPiece.toString().equals("BBEETLE")) {
                 bugList.remove(HiveGameState.piece.BBEETLE);
             }
-            else if(piece.getType().equals("Grasshopper")) {
+            else if(newPiece.toString().equals("BGHOPPER")) {
                 bugList.remove(HiveGameState.piece.BGHOPPER);
             }
             this.player2Pieces--;
-            board[boardX][boardY] = piece;
+            board[boardX][boardY] = newPiece;
             this.setTurn(WHITE_TURN);
             return true;
         }
@@ -179,54 +181,52 @@ public class HiveGameState {
     }
 
     /**
-     * Moves a piece on the board and sets the turn to that of the other player.
+     *Moves a piece on the board and sets the turn to that of the other player.
+     *The moving is the same for all pieces.
      *
      * @param id: the id of whose turn it is
+     * @param pieceOnBoard: the piece that will be moved
+     * @param startX: the piece's starting X position
+     * @param startY: the piece's starting Y position
+     * @param newX: the piece's new X position
+     * @param newY: the piece's new Y position
      * @return true if successful, false otherwise
      */
-    boolean movePiece(int id, Piece piece, int startX, int startY, int newX, int newY) {
+    boolean movePiece(int id, piece pieceOnBoard, int startX, int startY, int newX, int newY) {
+        // Can't move piece to space it's already at
+        if(startX == newX && startY == newY) {
+            return false;
+        }
+
+        // Cannot move to an occupied space (except beetles, not sure how to implement that)
+        if(board[newX][newY] != null) {
+            return false;
+        }
+
         if(id == WHITE_TURN) {
-            if(piece.getType().equals("QueenBee")) {
-
-            }
-            else if(piece.getType().equals("Spider")) {
-
-            }
-            else if(piece.getType().equals("Ant")) {
-
-            }
-            else if(piece.getType().equals("Beetle")) {
-
-            }
-            else if(piece.getType().equals("Grasshopper")) {
-
-            }
+            board[newX][newY] = pieceOnBoard;
+            // Must remove what was at starting space
+            board[startX][startY] = null;
             this.setTurn(BLACK_TURN);
             return true;
         }
         else if(id == BLACK_TURN) {
-            if(piece.getType().equals("QueenBee")) {
-
-            }
-            else if(piece.getType().equals("Spider")) {
-
-            }
-            else if(piece.getType().equals("Ant")) {
-
-            }
-            else if(piece.getType().equals("Beetle")) {
-
-            }
-            else if(piece.getType().equals("Grasshopper")) {
-
-            }
+            board[newX][newY] = pieceOnBoard;
+            // Must remove what was at starting space
+            board[startX][startY] = null;
             this.setTurn(WHITE_TURN);
             return true;
         }
         return false;
     }
 
-    // Not sure if we're implementing this, go ahead and delete if so
+    /**
+     * Undoes last two moves.
+     * This is not fully implemented.
+     *
+     * @param id: the id of whose turn it is
+     * @return true if successful, false otherwise
+     */
     boolean undo(int id) {
         if (id == WHITE_TURN || id == BLACK_TURN) {
             return true;
@@ -236,6 +236,7 @@ public class HiveGameState {
 
     /**
      * Quits the game.
+     * This is not fully implemented.
      *
      * @param id: the id of whose turn it is
      * @return true if successful, false otherwise
@@ -250,6 +251,7 @@ public class HiveGameState {
 
     /**
      * Zooms in or out on the screen.
+     * This is not fully implemented.
      *
      * @param id: the id of whose turn it is
      * @return true if successful, false otherwise

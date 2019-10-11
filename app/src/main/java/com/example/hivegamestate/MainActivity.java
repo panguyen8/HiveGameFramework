@@ -12,6 +12,15 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     EditText theText;
+
+    // Below citation by Samuel Nguyen
+    /**
+     * External Citation
+     * Date: October 10, 2019
+     * Problem: I needed to access an element at an index in the bugList ArrayList.
+     * Resource: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+     * Solution: I used the get() function.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
                 //call all methods of firstInstance
                 //each method also requires a String to be appended to the editText object
-                firstInstance.placePiece(1, firstInstance.ant, 50, 50);
+                firstInstance.placePiece(1, firstInstance.bugList.get(0), 50, 50);
                 theText.append("Piece was placed");
-                firstInstance.movePiece(1, firstInstance.ant, 50, 50, 60, 60);
+                firstInstance.movePiece(1, firstInstance.bugList.get(0), 50, 50, 60, 60);
                 theText.append("Piece was moved");
-                firstInstance.undo(1);
+                firstInstance.undo(0);
                 theText.append("Piece was undoed");
-                firstInstance.quit(1);
+                firstInstance.quit(0);
                 theText.append("game was quit");
                 firstInstance.zoom(1);
                 theText.append("Game was zoomed in");
