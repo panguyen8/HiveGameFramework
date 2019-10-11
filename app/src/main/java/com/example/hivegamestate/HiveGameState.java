@@ -198,7 +198,8 @@ public class HiveGameState {
 
     /**
      *Moves a piece on the board and sets the turn to that of the other player.
-     *The moving is the same for all pieces.
+     *Pieces are just being moved to empty spaces (although the beetle can go anywhere);
+     *this does not necessarily reflect movement rules.
      *
      * @param id: the id of whose turn it is
      * @param pieceOnBoard: the piece that will be moved
@@ -232,7 +233,10 @@ public class HiveGameState {
 
         // Cannot move to an occupied space (except beetles, not sure how to implement that)
         if(board[newX][newY] != null) {
-            return false;
+            if(!pieceOnBoard.toString().equals("WBEETLE") &&
+                    !pieceOnBoard.toString().equals("BBEETLE")) {
+                return false;
+            }
         }
 
         board[newX][newY] = pieceOnBoard;
