@@ -55,16 +55,15 @@ public class MainActivity extends AppCompatActivity {
                         " to position [60][60] from [50][50]\n");
                 firstInstance.undo(0);
                 theText.append("Moves undone by player 0.\n");
-                firstInstance.quit(1);
-                theText.append("Game quit by player 1.\n");
                 firstInstance.zoom(1);
                 theText.append("Game was zoomed in by player 1.\n");
                 int turn = firstInstance.getTurn();
                 theText.append("Got the turn, result is " + turn +".\n");
                 firstInstance.setTurn(0);
                 theText.append("Set the turn to player 0's turn.\n");
+                firstInstance.quit(1);
+                theText.append("Game quit by player 1.\n");
 
-                theText.append("randomString");
 
                 //the third instance of game created
                 HiveGameState thirdInstance = new HiveGameState();

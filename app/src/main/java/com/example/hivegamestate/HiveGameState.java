@@ -1,6 +1,7 @@
 /**
- *@author
- *@author
+ *@author Marc Hilderbrand
+ *@author Erik Liu
+ *@author Phuocan Nguyen
  *@author Samuel Nguyen
  *@author Stephen Nguyen
  *
@@ -17,13 +18,10 @@ import java.util.ArrayList;
 
 public class HiveGameState {
     private final int BLACK_TURN = 0;
-
-    //Stephen added this instance vars, delete if needed
     private final int WHITE_TURN = 1;
 
-    //using a 2d array for now, idk if we will used a linked list later on
-    //once we get the class for the pieces set up, we can change string to that new class
-    private piece[][] board = new piece[100][100];
+    //the declaration of the board
+    private piece[][] board = new piece[20][20];
 
     //int variable to tell whose turn it is
     //If 1, white moves, if 0, black moves
@@ -254,8 +252,9 @@ public class HiveGameState {
     }
 
     /**
-     * Undoes last two moves.
-     * This is not fully implemented.
+     * Undoes the last move. Not currently implemented as this
+     * will solely be an extra method that will be made if there
+     * is enough time.
      *
      * @param id: the id of whose turn it is
      * @return true if successful, false otherwise
