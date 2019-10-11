@@ -130,8 +130,8 @@ public class HiveGameState {
      * Solution: I used toString().
      */
     boolean placePiece(int id, piece newPiece, int boardX, int boardY) {
-        // Cannot place pieces if there are no more to place
         if (id == WHITE_TURN) {
+            // Cannot place pieces if there are no more to place
             if(player1Pieces == 0) {
                 return false;
             }
